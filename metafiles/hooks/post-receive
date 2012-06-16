@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+# This script is run as a Git post-receive hook (i.e. after a push)
+# It publishes lab skeleton files, solutions until $chap_last_visible
+# and slides.
+# All files are actually visible/published except that solutions from
+# $chap_last_visible are chmod-ed to 700 such that web access is
+# disabled.
+#
+# NO configuration (or changes for that matter) should be done here.
+# Use the $config file for configuration.
+#
+# Shamelessly copied from SO hook scripts.
+#
+# 2012, Razvan Deaconescu, razvan.deaconescu@cs.pub.ro
+#
+
+name=kernel  # to be replaced by proper name
+repo_base=$HOME/git-repos
+repo="$repo_base"/"$name".git
+config=$repo/hooks/hooks_config
+
+# load configuration variables
+source $config
+
+# clear publish_folder
+test -d "$publish_dir" && rm -f $publish_dir/*.*
+
+umask 077
+
+# archive skeleton files and solutions
+echo -n " * Creating archives for lab tasks and solutions ... "
+for index in $(seq -f %02g $chap_first $chap_last); do
+	git archive --format=zip --prefix=$prefix-$index-code/ HEAD:$prefix-$index/code/ > $publish_dir/$prefix-$index-code.zip
+	git archive --format=zip --prefix=$prefix-$index-code-sol/ HEAD:$prefix-$index/code-sol/ > $publish_dir/$prefix-$index-code-sol.zip
+done
+echo "done"
+
+echo -n " * Configuring access rights for published lab archives ... "
+chmod a+r $publish_dir/$prefix*-code.zip
+
+# set visible solutions
+for index in $(seq -f %02g $chap_first $chap_last_visible); do
+	chmod a+r $publish_dir/$prefix-$index-code-sol.zip
+done
+echo "done"
+
+umask 022
+
+# clean temporary folder
+test -d $slides_tmp || mkdir $slides_tmp
+test -d $slides_tmp/slides/ || mkdir $slides_tmp/slides/
+test -d $slides_tmp || rm -fr $slides_tmp/*
+
+echo -n " * Creating local copy of slides folders ... "
+for index in $(seq -f %02g $chap_first $chap_last); do
+	git archive --format=tar --prefix=$prefix-$index-slides/ HEAD:$prefix-$index/slides/ | (cd $slides_tmp/slides && tar xf -)
+done
+git archive --format=tar --prefix=sty/ HEAD:sty/ | (cd $slides_tmp && tar xf -)
+git archive --format=tar --prefix=metafiles/ HEAD:metafiles/ | (cd $slides_tmp && tar xf -)
+echo "done"
+
+echo -n " * Running slides build and publish script ... "
+slides_build_publish $slides_tmp/slides/ $publish_dir > $slides_tmp/slides_build_publish.err 2>&1
+echo "done"
+
+cat > $publish_dir/README <<END
+Do not publish data as files directly into this folder. All files will be
+removed at each push into the repository. Create a subfolder and publish
+information into that.
+END
+
+exit 0

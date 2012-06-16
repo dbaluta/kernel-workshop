@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# configuration file for resource publishing
+#  Updated from similar configuration for SO/SO2.
+#
+# This file is to be sourced by Git post-receive Bash scripts.
+# DO NOT use BLANKS when assigning values to variables.
+#
+# 2012, Razvan Deaconescu, razvan@rosedu.org
+#
+
+# lab publishing configuration
+name=kernel  # to be replaced by proper name
+publish_base=$HOME/res/current/
+publish_dir=$HOME/res/current/$name
+repo_base=$HOME/git-repos
+repo="$repo_base"/"$name".git
+prefix=sesiune  # to be replaced by proper name
+chap_first=1
+chap_last=5
+chap_last_visible=0
+
+# slides publishing configuration
+slides_tmp=$repo/hooks/hooks_tmp/
+
+function slides_build_publish()
+{
+	working_dir=$1
+	publish_dir=$2
+
+	> $slides_tmp/make-slides.log
+	pushd "$working_dir"
+	for subdir in $(find -mindepth 1 -maxdepth 1); do
+		pushd "$subdir"
+		make >> $slides_tmp/make-slides.log 2>&1
+		popd
+	done
+	find -name '*.pdf' -exec cp {} "$publish_dir" \;
+	popd
+}
