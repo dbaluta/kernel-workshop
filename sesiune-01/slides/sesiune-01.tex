@@ -6,10 +6,10 @@
 \usepackage{color}        % dacă e folosit highlight
 \usepackage{alltt}        % dacă e folosit highlight
 
-\title[Sesiunea No]{Sesiunea No}
-\subtitle{Numele capitolului}
-\author{Prenume Nume}
-\date{zi lună an}
+\title[Sesssion 1]{Session 1}
+\subtitle{Getting started with the Linux Kernel}
+\author{Daniel Băluță, Irina Preșa}
+\date{02 July 2012}
 
 \begin{document}
 
@@ -19,51 +19,172 @@
 \frame{\titlepage}
 
 % NB: Secțiunile nu sunt marcate vizual, ci doar apar în cuprins
-\section{Introducere}
+\section{Introduction}
 
-\begin{frame}{Introducere}
-  \begin{itemize}
-    \item alfa
-    \item beta
-    \item Extra
-      \begin{itemize}
-        \item arhaic
-        \item proterozoic
-      \end{itemize}
-  \end{itemize}
+\begin{frame}{Introduction}
+//TODO Daniel
 \end{frame}
 
-\begin{frame}{Continuare}
-  \begin{itemize}
-    \item brad
-    \item molid
-    \item carpen
-  \end{itemize}
+\section{Source Code Browsing}
+
+\begin{frame}{Source Code Browsing}
 \end{frame}
 
-\section{Punctul culminant}
+\section{Booting and Initialization}
+\subsection{Intro: Controllers and Hardware}
+\begin{frame}{Intro: Controllers and Hardware}
+     \begin{figure}
+         \includegraphics[scale=0.9]{img/bus.jpg}
+      \end{figure}
+\end{frame}
 
-\begin{frame}{Problema}
-  \begin{columns}
-    \pause
-    \begin{column}[l]{0.45\textwidth}
-      \begin{center}
-        Avem un server
-      \end{center}
+\begin{frame}{Intro: Controllers and Hardware}
+\textbf{Real Mode}\\
+\begin{itemize}
+  \item CPU puts physical address on the bus.
+  \item the memory controller recognizes it.
+\end{itemize}
+
+\textbf{Protected Mode}\\
+\begin{itemize}
+  \item CPU puts virtual address on the bus
+  \item MMU translates it into a physical address
+  \item memory protection
+  \begin{itemize}
+    \item 4 Operating Modes: Ring 0, Ring 1, Ring 2, Ring 3
+  \end{itemize}
+  \item hardware support for virtual memory
+  \item can address more memory
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intro: Controllers and Hardware}
+\textbf{I/O Ports}\\
+\begin{itemize}
+  \item device controller listens on its ports.
+  \item CPU puts port on the bus and sets the I/O access line.
+  \item the controller of the associated device recognizes it.
+  \item the memory controller will ignore the address.
+  \item CPU offers IN/OUT instructions.
+  \item ex: Intel interrupt controller.
+\end{itemize}
+
+\textbf{Memory Mapped I/O}\\
+\begin{itemize}
+  \item device controller mapped into memory.
+  \item CPU puts address on the bus.
+  \item the memory controller recognizes it.
+  \item ex: ARM interrupt controller.
+\end{itemize}
+\end{frame}
+
+\subsection{Before Kernel ...}
+\begin{frame}{Before Kernel ...}
       \begin{figure}
-         \includegraphics[scale=0.17]{img/hp-server.jpg}
+         \includegraphics[scale=0.3]{img/boot.png}
+      \end{figure}
+\end{frame}
+
+\begin{frame}{BIOS}
+\end{frame}
+
+\begin{frame}{Bootloader}
+\end{frame}
+
+\begin{frame}{Bootstrap}
+\end{frame}
+
+\begin{frame}{Extra: U-Boot}
+      \begin{figure}
+         \includegraphics[scale=0.3]{img/u-boot.png}
+      \end{figure}
+\end{frame}
+
+\begin{frame}{Extra: U-Boot}
+% tfpt, fatload, burn and manage flash, etc
+\end{frame}
+
+\begin{frame}{Extra: Boot Embedded Device}
+  \begin{columns}
+    \begin{column}[l]{0.45\textwidth}
+      \begin{figure}
+         \includegraphics[scale=0.17]{img/beagle.jpg}
       \end{figure}
     \end{column}
-    \pause
     \begin{column}[l]{0.45\textwidth}
-      \begin{center}
-      Cum procedăm?
-      \end{center}
       \begin{figure}
-         \includegraphics[scale=0.25]{img/thinker.jpg}
+         \includegraphics[scale=0.65]{img/phone.jpg}
       \end{figure}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Extra: Case Study}
+  \begin{columns}
+    \pause
+    \begin{column}[l]{0.45\textwidth}
+      \begin{figure}
+         \includegraphics[scale=0.17]{img/flash.png}
+      \end{figure}
+      \begin{center}
+        \tiny{- burn u-boot and kernel images on the flash.}
+      \end{center}
+    \end{column}
+    \pause
+    \begin{column}[l]{0.45\textwidth}
+      \begin{figure}
+         \includegraphics[scale=0.17]{img/sdcard.png}
+      \end{figure}
+      \begin{center}
+        \tiny{- fatload mmc 0 8000 image.bin}
+      \end{center}
+    \end{column}
+  \end{columns}
+     \pause
+     \begin{figure}
+         \includegraphics[scale=0.17]{img/complex.png}
+      \end{figure}
+      \begin{center}
+      \tiny{- tftp 8000 image.bin}
+      \end{center}
+\end{frame}
+
+
+\subsection{Startup Kernel ...}
+
+\begin{frame}{Startup Kernel}
+
+\textbf{Entry point...}\\
+\begin{itemize}
+\item startup\_32
+\begin{itemize}
+\item page tables
+\item enable mmu
+\end{itemize}
+\end{itemize}
+
+\textbf{Initialize...}\\
+\begin{itemize}
+\item start\_kernel
+\begin{itemize}
+\item trap\_init
+\item mm\_init
+\item init\_IRQ
+\item sched\_init
+\item time\_init
+\item console\_init
+\item smp\_init
+\end{itemize}
+\end{itemize}
+
+\textbf{And.. UP!}\\
+\begin{itemize}
+\item rest\_init
+\begin{itemize}
+\item kernel\_thread
+\item cpu\_idle
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Cod verbatim}
@@ -81,54 +202,44 @@ crw-rw----  1 root root      4,  12 Oct  2 21:53 tty12
   \end{verbatim}
 \end{frame}
 
-\begin{frame}{Informații de stare}
-  \input{code/user-stat}
-\end{frame}
 
 \section{Keywords}
 
-\begin{frame}{Cuvinte cheie}
+\begin{frame}{Keywords}
   \begin{columns}
     \begin{column}[l]{0.5\textwidth}
       \begin{itemize}
-        \item certificări
-        \item LPIC
-        \item GNU/Linux
-        \item Debian
-        \item sysfs
-        \item procfs
-        \item udev
-        \item dispozitive
+        \item cscope, ctags, lxr
+        \item real vs protected mode
+        \item ports vs memory mapped I/O
+        \item 
+        \item 
+        \item 
+        \item 
+        \item 
       \end{itemize}
     \end{column}
     \begin{column}[l]{0.5\textwidth}
       \begin{itemize}
-        \item apropos, man, info
-        \item linie de comandă
-        \item shell
-        \item biblioteca readline
-        \item pachete, PMS
-        \item dpkg, apt
-        \item utilizatori, grupuri
-        \item parole
+        \item 
+        \item 
+        \item 
+        \item 
+        \item 
+        \item 
+        \item 
+        \item 
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Resurse utile}
+\begin{frame}{Resources}
   \begin{itemize}
-    \item James Turnbull, Peter Lieverdink, Dennis Matotek -- Pro Linux System
-    Administration
-    \item \url{http://elf.cs.pub.ro/pisr/}
-    \item
-    \url{http://www.lpi.org/index.php/eng/certification/the_lpic_program}
-    \item \url{http://debian.org/doc/user-manuals}
-    \item \url{http://wiki.debian.org/}
-    \item \url{http://www.debian-administration.org/}
+    \item \url{http://www.brokenthorn.com/Resources/OSDev7.html}
   \end{itemize}
 \end{frame}
 
-\section{Întrebări}
+\section{Questions}
 
 \end{document}
