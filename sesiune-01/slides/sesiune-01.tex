@@ -28,6 +28,9 @@
 \section{Source Code Browsing}
 
 \begin{frame}{Source Code Browsing}
+\begin{figure}
+  \includegraphics[scale=0.35]{img/source.png}
+\end{figure}
 \end{frame}
 
 \section{Booting and Initialization}
@@ -41,20 +44,20 @@
 \begin{frame}{Intro: Controllers and Hardware}
 \textbf{Real Mode}\\
 \begin{itemize}
-  \item CPU puts physical address on the bus.
+  \item CPU puts \textbf{physical} address on the bus.
   \item the memory controller recognizes it.
 \end{itemize}
 
 \textbf{Protected Mode}\\
 \begin{itemize}
-  \item CPU puts virtual address on the bus
-  \item MMU translates it into a physical address
-  \item memory protection
+  \item CPU puts \textbf{virtual} address on the bus.
+  \item MMU translates it into a physical address.
+  \item memory protection.
   \begin{itemize}
-    \item 4 Operating Modes: Ring 0, Ring 1, Ring 2, Ring 3
+    \item 4 Operating Modes: Ring 0, Ring 1, Ring 2, Ring 3.
   \end{itemize}
-  \item hardware support for virtual memory
-  \item can address more memory
+  \item hardware support for virtual memory.
+  \item can address more memory.
 \end{itemize}
 \end{frame}
 
@@ -78,20 +81,28 @@
 \end{itemize}
 \end{frame}
 
-\subsection{Before Kernel ...}
-\begin{frame}{Before Kernel ...}
+\subsection{Before Kernel}
+\begin{frame}{Before Kernel}
       \begin{figure}
          \includegraphics[scale=0.3]{img/boot.png}
       \end{figure}
 \end{frame}
 
 \begin{frame}{BIOS}
+\begin{itemize}
+\item POST : Performs the Power On Self Tests.
+\item Basic Devices Initialization (needed for the boot process).
+\item Create Real Mode memory map.
+\item Find the boot device and to jump to its sector '0' (load MBR).
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Bootloader}
+//TODO site
 \end{frame}
 
 \begin{frame}{Bootstrap}
+//TODO site
 \end{frame}
 
 \begin{frame}{Extra: U-Boot}
@@ -101,7 +112,15 @@
 \end{frame}
 
 \begin{frame}{Extra: U-Boot}
-% tfpt, fatload, burn and manage flash, etc
+\begin{itemize}
+\item universal bootloader.
+\item network and serial line configurations.
+\item can load kernel image into memory (RAM).
+  \begin{itemize}
+  \item from the network (tftp), sdcard or flash memory.
+  \end{itemize}
+\item //TODO site
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Extra: Boot Embedded Device}
@@ -119,7 +138,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Extra: Case Study}
+\begin{frame}{Extra: Case Study - Boot Embedded Device}
   \begin{columns}
     \pause
     \begin{column}[l]{0.45\textwidth}
@@ -150,7 +169,7 @@
 \end{frame}
 
 
-\subsection{Startup Kernel ...}
+\subsection{Startup Kernel}
 
 \begin{frame}{Startup Kernel}
 
@@ -187,6 +206,11 @@
 \end{itemize}
 \end{frame}
 
+%//TODO: code examples: trap_init (zic de registru)
+%// la page table zic de CR3
+%// la init_IRQ arat alea cu IN/OUT
+%//kernel thread si cpu idle code??
+
 \begin{frame}[fragile]{Cod verbatim}
   \pause
   \footnotesize
@@ -212,8 +236,8 @@ crw-rw----  1 root root      4,  12 Oct  2 21:53 tty12
         \item cscope, ctags, lxr
         \item real vs protected mode
         \item ports vs memory mapped I/O
-        \item 
-        \item 
+        \item bios, bootloader, bootstrap
+        \item startup kernel
         \item 
         \item 
         \item 
@@ -234,8 +258,10 @@ crw-rw----  1 root root      4,  12 Oct  2 21:53 tty12
   \end{columns}
 \end{frame}
 
+%TODO: cursul ala de startup, site opengrok, lxr, init kernel doc
 \begin{frame}{Resources}
   \begin{itemize}
+    \item \url{http://cscope.sourceforge.net/cscope_vim_tutorial.html}
     \item \url{http://www.brokenthorn.com/Resources/OSDev7.html}
   \end{itemize}
 \end{frame}
