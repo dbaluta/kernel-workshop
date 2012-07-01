@@ -120,18 +120,26 @@
 \begin{frame}{BIOS}
 \begin{itemize}
 \item POST : Performs the Power On Self Tests.
-\item Basic Devices Initialization (needed for the boot process).
-\item Create Real Mode memory map.
-\item Find the boot device and to jump to its sector '0' (load MBR).
+\item basic devices initialization (needed for the boot process).
+\item creates Real Mode memory map.
+\item finds the boot device and jumps to its sector '0' (load MBR).
 \end{itemize}
 \end{frame}
 
+%TODO: de ce mai fol bootloader?
 \begin{frame}{Bootloader}
-//TODO site
+\begin{itemize}
+\item loads the operating system (can boot more than one OS).
+\item it looks in the /boot directory and loads the kernel image.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Bootstrap}
-//TODO site
+\begin{itemize}
+\item assembly code added to the kernel image (bzImage).
+\item uncompress the image ("Decrompressing Linux...").
+\item call start\_kernel function.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Extra: U-Boot}
@@ -148,7 +156,6 @@
   \begin{itemize}
   \item from the network (tftp), sdcard or flash memory.
   \end{itemize}
-\item //TODO site
 \end{itemize}
 \end{frame}
 
@@ -169,7 +176,6 @@
 
 \begin{frame}{Extra: Case Study - Boot Embedded Device}
   \begin{columns}
-    \pause
     \begin{column}[l]{0.45\textwidth}
       \begin{figure}
          \includegraphics[scale=0.17]{img/flash.png}
@@ -235,26 +241,22 @@
 \end{itemize}
 \end{frame}
 
-%//TODO: code examples: trap_init (zic de registru)
-%// la page table zic de CR3
-%// la init_IRQ arat alea cu IN/OUT
-%//kernel thread si cpu idle code??
-
-\begin{frame}[fragile]{Cod verbatim}
-  \pause
-  \footnotesize
-  \begin{verbatim}
-brw-rw----  1 root disk      8,   0 Oct  2 21:53 sda
-brw-rw----  1 root disk      8,   1 Oct  2 21:53 sda1
-brw-rw----  1 root disk      8,  10 Oct  2 18:53 sda10
-brw-rw----  1 root disk      8,  11 Oct  2 21:53 sda11
-crw-rw----  1 root root      4,   0 Oct  2 21:53 tty0
-crw-rw----  1 root root      4,  10 Oct  2 21:53 tty10
-crw-rw----  1 root root      4,  11 Oct  2 21:53 tty11
-crw-rw----  1 root root      4,  12 Oct  2 21:53 tty12
-  \end{verbatim}
+%//TODO: kernel thread si cpu idle code??
+\begin{frame}[fragile]{Enable Paging}
+\input{code/paging}
 \end{frame}
 
+\begin{frame}[fragile]{Init Traps}
+\input{code/inittraps}
+\end{frame}
+
+\begin{frame}[fragile]{Interrupt Controller}
+\input{code/interrupt}
+\end{frame}
+
+\begin{frame}[fragile]{First Thread}
+\input{code/idle}
+\end{frame}
 
 \section{Keywords}
 
@@ -287,11 +289,19 @@ crw-rw----  1 root root      4,  12 Oct  2 21:53 tty12
   \end{columns}
 \end{frame}
 
-%TODO: cursul ala de startup, site opengrok, lxr, init kernel doc
+\section{Resources}
 \begin{frame}{Resources}
   \begin{itemize}
-    \item \url{http://cscope.sourceforge.net/cscope_vim_tutorial.html}
-    \item \url{http://www.brokenthorn.com/Resources/OSDev7.html}
+  \item \href{http://cscope.sourceforge.net/cscope_vim_tutorial.html}{Using Cscope with vim}
+  \item \href{http://cscope.sourceforge.net/large_projects.html}{Using Cscope on large projects}
+  \item \href{http://lxr.free-electrons.com/}{Linux Cross Reference}
+  \item \href{http://hub.opensolaris.org/bin/view/Project+opengrok/}{OpenGrok}
+  \item \href{http://oszur11.git.sourceforge.net/git/gitweb.cgi?p=oszur11/oszur11;a=tree;hb=e2c6c782f3595dcb5293d790a28d67f47529cfaf}{Educational
+  Kernel Project}
+  \item \href{http://tldp.org/}{The Linux Documentation Project}
+  \item \href{http://tldp.org/HOWTO/Linux-Init-HOWTO.html}{Linux Init}
+  \item \href{http://wiki.osdev.org/Main_Page}{OSDev}
+  \item \href{http://www.learninglinuxkernel.com/}{Learning Linux Kernel}
   \end{itemize}
 \end{frame}
 
