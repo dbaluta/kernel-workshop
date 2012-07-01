@@ -68,7 +68,7 @@
 \AtBeginSection[] % Do nothing for \section*
 {
   \begin{frame}<beamer>
-    \frametitle{Cuprins}
+    \frametitle{Content}
   \tableofcontents[currentsection]
     \end{frame}
 }
