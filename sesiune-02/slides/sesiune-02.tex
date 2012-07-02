@@ -6,10 +6,10 @@
 \usepackage{color}        % dacă e folosit highlight
 \usepackage{alltt}        % dacă e folosit highlight
 
-\title[Sesiunea No]{Sesiunea No}
-\subtitle{Numele capitolului}
-\author{Prenume Nume}
-\date{zi lună an}
+\title[Session 2]{Session 2}
+\subtitle{Kernel: Code, Build, Run}
+\author{Daniel Băluţă, Irina Preşa}
+\date{July 03, 2012}
 
 \begin{document}
 
@@ -19,116 +19,140 @@
 \frame{\titlepage}
 
 % NB: Secțiunile nu sunt marcate vizual, ci doar apar în cuprins
-\section{Introducere}
+\section{OS Basic Concepts}
 
-\begin{frame}{Introducere}
-  \begin{itemize}
-    \item alfa
-    \item beta
-    \item Extra
-      \begin{itemize}
-        \item arhaic
-        \item proterozoic
-      \end{itemize}
-  \end{itemize}
+\begin{frame}{Monolithic kernel vs Microkernel}
+	\begin{itemize}
+	\item monolithic kernel
+    	\begin{itemize}
+	\item single image
+	\item smaller
+	\item faster
+	\end{itemize}
+	\item microkernel
+	\begin{itemize}
+	\item easy to maintain
+	\item extensible
+	\item rapid development time
+	\item reliable
+	\end{itemize}
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Continuare}
-  \begin{itemize}
-    \item brad
-    \item molid
-    \item carpen
-  \end{itemize}
+\begin{frame}{User space vs Kernel spce}
+
+\begin{figure}
+  \includegraphics[scale=0.4]{img/user-kernel-space.jpg}
+\end{figure}
+
 \end{frame}
 
-\section{Punctul culminant}
 
-\begin{frame}{Problema}
-  \begin{columns}
-    \pause
-    \begin{column}[l]{0.45\textwidth}
-      \begin{center}
-        Avem un server
-      \end{center}
-      \begin{figure}
-         \includegraphics[scale=0.17]{img/hp-server.jpg}
-      \end{figure}
-    \end{column}
-    \pause
-    \begin{column}[l]{0.45\textwidth}
-      \begin{center}
-      Cum procedăm?
-      \end{center}
-      \begin{figure}
-         \includegraphics[scale=0.25]{img/thinker.jpg}
-      \end{figure}
-    \end{column}
-  \end{columns}
+\section{Compiling the kernel}
+
+\begin{frame}{Kernel configuration file}
+
+\begin{figure}
+  \includegraphics[scale=0.4]{img/Linux-kernel-menuconfig.png}
+\end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Cod verbatim}
-  \pause
-  \footnotesize
-  \begin{verbatim}
-brw-rw----  1 root disk      8,   0 Oct  2 21:53 sda
-brw-rw----  1 root disk      8,   1 Oct  2 21:53 sda1
-brw-rw----  1 root disk      8,  10 Oct  2 18:53 sda10
-brw-rw----  1 root disk      8,  11 Oct  2 21:53 sda11
-crw-rw----  1 root root      4,   0 Oct  2 21:53 tty0
-crw-rw----  1 root root      4,  10 Oct  2 21:53 tty10
-crw-rw----  1 root root      4,  11 Oct  2 21:53 tty11
-crw-rw----  1 root root      4,  12 Oct  2 21:53 tty12
-  \end{verbatim}
+
+\begin{frame}{build targets}
+\begin{itemize}
+	\item {\bf config}, update config using a line oriented program
+	\item {\bf i386_defconfig}, build for i386
+	\item {\bf vmlinux}, builds the bare kernel image
+	\item {\bf bzImage}, builds compressed kernel image
+	\item {\bf modules}, builds all modules
+	\item {\bf clean}, remove most generated files
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Informații de stare}
-  \input{code/user-stat}
+\begin{frame}{Compilation steps}
+\begin{itemize}
+	\item make menuconfig
+	\item make bzImage
+	\item make modules
+	\item make modules_install
+	\item create initial ramdisk
+	\item update grub entry
+	\item reboot
+\end{itemize}
 \end{frame}
+
+\section{Kernel Modules}
+
+
+\begin{frame}{Kernel modules}
+
+\begin{itemize}
+	\item {\bf printk}
+	\item {\bf dmesg}, print or control the kernel ring buffer
+	\item {\bf insmod}, insert a module into the kernel
+	\item {\bf rmmod}, remove a module form the kernel
+	\item {\bf modprobe}, add or remove modules
+	\item {\bf modinfo}, show information about a module
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Simple kernel module}
+\begin{verbatim}#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/module.h>
+
+MODULE_DESCRIPTION("My kernel module");
+MODULE_AUTHOR("Me");
+MODULE_LICENSE("GPL");
+
+static int simple_init(void)
+{
+        printk( KERN_DEBUG "Hi\n" );
+        return 0;
+}
+static void simple_exit(void)
+{
+        printk( KERN_DEBUG "Bye\n" );
+}
+module_init(simple_init);
+module_exit(simple_exit);                          
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Makefile}
+\begin{verbatim}
+KDIR=/lib/modules/`uname -r`/build
+kbuild:
+        make -C $(KDIR) M=`pwd`
+clean:
+        make -C $(KDIR) M=`pwd` clean
+\end{verbatim}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Kbuild}
+\begin{verbatim}
+EXTRA_CFLAGS = -g
+obj-m        = simple.o
+\end{verbatim}
+\end{frame}
+
+
+
 
 \section{Keywords}
 
-\begin{frame}{Cuvinte cheie}
-  \begin{columns}
-    \begin{column}[l]{0.5\textwidth}
+\begin{frame}{Keywords}
       \begin{itemize}
-        \item certificări
-        \item LPIC
-        \item GNU/Linux
-        \item Debian
-        \item sysfs
-        \item procfs
-        \item udev
-        \item dispozitive
+        \item make, kbuild
+	\item insmod, rmmod
+	\item bzImage, initrd
+	\item built-in, loadable
       \end{itemize}
-    \end{column}
-    \begin{column}[l]{0.5\textwidth}
-      \begin{itemize}
-        \item apropos, man, info
-        \item linie de comandă
-        \item shell
-        \item biblioteca readline
-        \item pachete, PMS
-        \item dpkg, apt
-        \item utilizatori, grupuri
-        \item parole
-      \end{itemize}
-    \end{column}
-  \end{columns}
 \end{frame}
 
-\begin{frame}{Resurse utile}
-  \begin{itemize}
-    \item James Turnbull, Peter Lieverdink, Dennis Matotek -- Pro Linux System
-    Administration
-    \item \url{http://elf.cs.pub.ro/pisr/}
-    \item
-    \url{http://www.lpi.org/index.php/eng/certification/the_lpic_program}
-    \item \url{http://debian.org/doc/user-manuals}
-    \item \url{http://wiki.debian.org/}
-    \item \url{http://www.debian-administration.org/}
-  \end{itemize}
-\end{frame}
-
-\section{Întrebări}
+\section{Questions}
 
 \end{document}
