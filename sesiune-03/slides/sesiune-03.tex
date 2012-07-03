@@ -5,6 +5,7 @@
 \usepackage{code/highlight}
 \usepackage{color}        % dacă e folosit highlight
 \usepackage{alltt}        % dacă e folosit highlight
+\usepackage{amsmath}
 
 \title[Session 3]{Session 3}
 \subtitle{Introduction to Kernel Space and API}
@@ -23,18 +24,130 @@
 
 \subsection{Execution Contexts}
 \begin{frame}{Execution Contexts}
+\begin{itemize}
+\item \textbf{User context}
+\item \textbf{Interrupt context}
+\begin{itemize}
+\item an interrupt can only be preempted by another interrupt,\\ not by a process (user context).
+\item as interrupts are asynchronous, the code executed in a interrupt context isn't backed by a well defined process context.
+\item not having an associated process context (that can be saved and restored on reschedule), the interrupt context code can't
+execute operations such as sleep, schedule(), or access the user's memory.
+\end{itemize}
+\end{itemize}
 \end{frame}
+
+\begin{frame}{Handling Interrupts}
+\begin{itemize}
+\item Phase 1: Critical Actions
+\begin{itemize}
+\item other interrupts are masked.
+\item e.g. communication with the PIC.
+\end{itemize}
+\item Phase 2: Immediate Actions
+\begin{itemize}
+\item only the current interrupt is masked.
+\end{itemize}
+\item Phase 3: Deferrable Actions
+\begin{itemize}
+\item can be executed later.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
 
 \subsection{Copy to/from User}
 \begin{frame}{Copy to/from User}
+\begin{itemize}
+\item \textbf{in} pointer to kernel space\\
+=$>$ access to protected data.\\
+=$>$ solution: copy\_to\_user.
+\item \textbf{out} pointer to kernel space\\
+=$>$ kernel memory corruption.\\
+=$>$ solution: copy\_from\_user.
+\end{itemize}
 \end{frame}
 
 \section{Kernel API}
+\begin{frame}{Kernel API}
+\begin{itemize}
+\item printk, classical string operations
+\item kmalloc/kfree
+\begin{itemize}
+\item GFP\_KERNEL/ATOMIC
+\end{itemize}
+\item lists: doubly linked list API
+\begin{itemize}
+\item list\_add, list\_del, list\_for\_each
+\end{itemize}
+\item locking
+\begin{itemize}
+\item semaphore, mutex, spinlock
+\item atomic variables (read, add, sub, set)
+\item atomic operations on bits
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kernel API - Lists Example}
+\input{code/list}
+\end{frame}
 
 \section{Kernel - User Space Communication}
 
 \subsection{Syscalls}
-%TODO: si implementare?
+
+\begin{frame}{Kernel Trap Flow}
+  \begin{columns}
+    \begin{column}[l]{0.55\textwidth}
+        \begin{enumerate}
+                \item<5-> kernel\_trap [number] (e.g. 0x80)
+                \item<5-> ring 3 -$>$ ring 0
+                \item<5-> call trap\_entry (e.g. syscall\_entry)\\
+                (tvector[0x80]=syscall\_entry).
+                \item<5-> push registers
+                \item<5-> handle trap (e.g. syscall handler)
+                \item<5-> pop registers
+                \item<5-> ring 0 -$>$ ring 3
+        \end{enumerate}
+    \end{column}
+    \begin{column}[l]{0.35\textwidth}
+        \begin{itemize}
+                \item<2-> ESP0, ESP3, TSS
+                \item<3-> Traps Vector 
+                \item<4-> Registers
+        \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Syscalls}
+\begin{itemize}
+\item generate trap: int \$0x80 or sysenter (Pentium II)
+\item syscall number: eax
+\item parameters: ebx, ecx, edx, esi, edi, ebp
+\item result: eax
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Syscalls}
+\input{code/sysex}
+\end{frame}
+
+\begin{frame}{Syscalls Entry}
+\input{code/entry}
+\end{frame}
+
+\begin{frame}{Syscalls}
+\input{code/save}
+\end{frame}
+
+\begin{frame}{Syscalls Return}
+\input{code/ret}
+\end{frame}
+
+\begin{frame}{Syscalls}
+\input{code/rest}
+\end{frame}
 
 \subsection{Pseudo-Filesystems}
 %TODO: procfs, sysfs
@@ -43,7 +156,6 @@
 \subsection{Device Files}
 
 \section{Keywords}
-
 \begin{frame}{Keywords}
   \begin{columns}
     \begin{column}[l]{0.5\textwidth}
@@ -59,6 +171,7 @@
   \end{columns}
 \end{frame}
 
+\section{Resources}
 \begin{frame}{Resources}
   \begin{itemize}
   \item lala
