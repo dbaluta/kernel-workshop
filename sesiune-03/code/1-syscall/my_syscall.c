@@ -22,6 +22,7 @@ extern void *sys_call_table[];
 
 /**
  * Syscall that changes the hostname
+ * @param name: new hostname
  */
 asmlinkage long my_syscall(char __user * name)
 {
