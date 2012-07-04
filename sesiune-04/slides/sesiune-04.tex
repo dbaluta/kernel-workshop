@@ -19,9 +19,45 @@
 \frame{\titlepage}
 
 % NB: Secțiunile nu sunt marcate vizual, ci doar apar în cuprins
-\section{Kprintf}
-\begin{frame}{Kprintf}
+\section{Printk}
+\begin{frame}{Printk Loglevels}
+Eight loglevels defined in $<$linux/kernel.h$>$ header.
+
+\begin{itemize}
+\item KERN\_EMERG: emergency messages, e.g. before a system crash.
+\item KERN\_ALERT: serious problems that need a quick response.
+\item KERN\_CRIT: critical condition, hardware or software failure.
+\item KERN\_ERR: error conditions.
+\item KERN\_WARNING: warning conditions.
+\item KERN\_NOTICE: situations that require notification.
+\item KERN\_INFO: info/log messages.
+\item KERN\_DEBUG: debug phase only.
+\end{itemize}
 \end{frame}
+
+\begin{frame}{Printk Loglevels}
+\begin{itemize}
+\item numbers from 0 to 7, smaller values are higher priorities.
+\item by default is the level described by DEFAULT\_MESSAGE\_LOGLEVEL
+variable.
+\item klogd and syslogd display only the messages with priority less or equal
+to DEFAULT\_CONSOLE\_LOGLEVEL.
+\item the base priority can be changed with sys\_syslog syscall or by writing
+to /proc/sys/kernel/printk.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Printk Loglevels}
+\begin{itemize}
+\item printk writes messages in a circular buffer.
+\item it wakes any processes that are waiting for messages.
+\begin{itemize}
+\item e.g. from the syslog syscall or a process that reads /proc/kmsg.
+\end{itemize}
+\item if the buffer fills up, it overwrites the old data.
+\end{itemize}
+\end{frame}
+
 
 \section{Understand a Kernel Oops/Panic}
 \begin{frame}{..}
