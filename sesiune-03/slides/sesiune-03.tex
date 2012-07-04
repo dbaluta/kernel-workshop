@@ -150,22 +150,40 @@ execute operations such as sleep, schedule(), or access the user's memory.
 \end{frame}
 
 \subsection{Pseudo-Filesystems}
-%TODO: procfs, sysfs
-% read, write, seq
+\begin{frame}{Pseudo-Filesystems}
+\begin{itemize}
+\item procfs /proc, sysfs /sys
+\item read, write, seq ops
+\end{itemize}
+\end{frame}
 
 \subsection{Device Files}
+\begin{frame}{Device Files}
+\begin{itemize}
+\item /dev
+\item read, write
+\item ioctl
+\end{itemize}
+\end{frame}
+
 
 \section{Keywords}
 \begin{frame}{Keywords}
   \begin{columns}
     \begin{column}[l]{0.5\textwidth}
       \begin{itemize}
-        \item certificări
+        \item user context
+        \item interrupt context
+        \item copy to/from user
+        \item syscalls
       \end{itemize}
     \end{column}
     \begin{column}[l]{0.5\textwidth}
       \begin{itemize}
-        \item apropos, man, info
+        \item kernel API
+        \item locking
+        \item /proc, /sys, /dev
+        \item ioctl
       \end{itemize}
     \end{column}
   \end{columns}
@@ -174,7 +192,10 @@ execute operations such as sleep, schedule(), or access the user's memory.
 \section{Resources}
 \begin{frame}{Resources}
   \begin{itemize}
-  \item lala
+  \item \href{http://elf.cs.pub.ro/so2/wiki/}{SO2 Course}
+  \item \href{http://www.ibm.com/developerworks/linux/library/l-proc/index.html}{Access procfs}
+  \item \href{http://articles.manugarg.com/systemcallinlinux2_6.html}{System Calls}
+  \item \href{http://www.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/c214.html}{Kernel Locking}
   \end{itemize}
 \end{frame}
 
