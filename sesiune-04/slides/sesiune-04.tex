@@ -202,6 +202,22 @@ using DR0 to DR7 registers.
 
 \section{Kprobe}
 \begin{frame}{Kprobe}
+\begin{itemize}
+\item dynamically insert probe code in the runnning kernel.
+\item usefull for situations where we have to follow the flow of a submodule.
+\item e.g. some packets received over the network are discarded; follow their
+trace into the kernel.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kprobe}
+\begin{itemize}
+\item  a \textbf{kprobe} can be inserted on virtually any instruction in the kernel.
+\item a \textbf{jprobe} is inserted at the entry to a kernel function, and provides access to the
+function's arguments.
+\item a \textbf{return probe} fires when a specified function returns.
+\end{itemize}
+\end{frame}
 
 \section{Keywords}
 \begin{frame}{Keywords}
