@@ -1,4 +1,4 @@
-TEXFILES = sysex.tex entry.tex ret.tex save.tex rest.tex list.tex
+TEXFILES = sysex.tex entry.tex ret.tex save.tex rest.tex list.tex hw.tex
 
 ifeq (3, $(shell highlight --version | head -2 | tail -1 | rev | cut -d ' ' -f 1 | rev | cut -d '.' -f 1))
 	HIGHLIGHT_OPTS = -O latex -l -f -t 8 -K small -S bash -c highlight.sty
@@ -7,6 +7,9 @@ else
 endif
 
 all: $(TEXFILES)
+
+hw.tex: hw.c
+	highlight $(HIGHLIGHT_OPTS) -i $< -o $@
 
 sysex.tex: sysex.c
 	highlight $(HIGHLIGHT_OPTS) -i $< -o $@

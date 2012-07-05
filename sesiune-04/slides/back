@@ -60,35 +60,9 @@ to /proc/sys/kernel/printk.
 \end{itemize}
 \end{frame}
 
-\section{Understand a Kernel Oops}
-\begin{frame}{Understand a Kernel Oops}
-\begin{figure}
-  \includegraphics[scale=0.3]{img/1.png}
-  \end{figure}
-\end{frame}
 
-\begin{frame}{Understand a Kernel Oops}
-\begin{figure}
-  \includegraphics[scale=0.3]{img/2.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Understand a Kernel Oops}
-\begin{figure}
-  \includegraphics[scale=0.3]{img/3.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Understand a Kernel Oops}
-\begin{figure}
-  \includegraphics[scale=0.3]{img/5.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Understand a Kernel Oops}
-\begin{figure}
-  \includegraphics[scale=0.3]{img/6.png}
-  \end{figure}
+\section{Understand a Kernel Oops/Panic}
+\begin{frame}{..}
 \end{frame}
 
 \section{Classical Debug Solutions}
@@ -128,80 +102,16 @@ pc : [<c01b063c>] lr : [<c01b0640>] psr: a0000013
 \end{frame}
 
 \section{Memory Debug}
-\begin{frame}{kmemleak}
-\begin{itemize}
-\item follows allocations similar with a garbage collector
-\item scan allocated memory and kernel stack for memory leaks
-\item CONFIG_DEBUG_KMEMLEAK
-\item trigger a memory scan
-\begin{itemize}
-\item echo scan \textgreater /sys/kernel/debug/kmemleak
-\end{itemize}
-\item clear all posible leaks
-\begin{itemize}
-\item echo clear \textgreater /sys/kernel/debug/kmemleak
-\end{itemize}
-\item read memory leaks
-\begin{itemize}
-\item cat /sys/kernel/debug/kmemleak
-\end{itemize}
-\end{itemize}
-
+\begin{frame}{...}
 \end{frame}
 
-\begin{frame}{Debug SLAB}
-\begin{itemize}
-\item poisoned based debugging
-\item 0x5a5a5a5a - uninitialized memory
-\item 0x6b6b6b6b - freed memory
-\item use before init
-\item use after free
-\item buffer overflow
-\end{itemize}
+\section{Tracepoints and Kprobe}
+\begin{frame}{...}
 \end{frame}
 
-\section{Netconsole}
-\begin{frame}{Netconsole}
-\begin{itemize}
-\item kernel module for logging debug messages over the network.
-\item solves problems such as not being able to use disk logging, the serial port or the
-terminal.
-\end{itemize}
-Configure:\\
-\begin{itemize}
-\item source port, IP address and interface.
-\item destination port, MAC and IP addresses.
-\end{itemize}
+\section{Netconsole and Netcat}
+\begin{frame}{...}
 \end{frame}
-
-\section{Hw-breakpoint}
-\begin{frame}{Hw-breakpoint}
-Problem
-\begin{itemize}
-\item buffer overruns, memory corruption.
-\item bugs very hard to isolate, the corruption can occur anywhere in the program;
-even more, the error can appear long after the corruption.
-\item software implementations of watchpoints are very slow.
-\item e.g. monitor a corrupted variable that is written from various places or
-by different threads.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Hw-breakpoint}
-Solution
-\begin{itemize}
-\item Intel x86 processors support up four hardware breakpoints/watchpoints
-using DR0 to DR7 registers.
-\item monitor read, write, execute access.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Hw-breakpoint}
-\input{code/hw}
-\end{frame}
-
-\section{Kprobe}
-\begin{frame}{Kprobe}
 
 \section{Keywords}
 \begin{frame}{Keywords}
