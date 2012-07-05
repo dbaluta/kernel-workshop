@@ -128,7 +128,25 @@ pc : [<c01b063c>] lr : [<c01b0640>] psr: a0000013
 \end{frame}
 
 \section{Memory Debug}
-\begin{frame}{...}
+\begin{frame}{kmemleak}
+\begin{itemize}
+\item follows allocations similar with a garbage collector
+\item scan allocated memory and kernel stack for memory leaks
+\item CONFIG_DEBUG_KMEMLEAK
+\item trigger a memory scan
+\begin{itemize}
+\item echo scan \textgreater /sys/kernel/debug/kmemleak
+\end{itemize}
+\item clear all posible leaks
+\begin{itemize}
+\item echo clear \textgreater /sys/kernel/debug/kmemleak
+\end{itemize}
+\item read memory leaks
+\begin{itemize}
+\item cat /sys/kernel/debug/kmemleak
+\end{itemize}
+\end{itemize}
+
 \end{frame}
 
 \section{Tracepoints and Kprobe}
