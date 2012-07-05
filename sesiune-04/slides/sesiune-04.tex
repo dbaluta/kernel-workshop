@@ -149,6 +149,18 @@ pc : [<c01b063c>] lr : [<c01b0640>] psr: a0000013
 
 \end{frame}
 
+\begin{frame}{Debug SLAB}
+\begin{itemize}
+\item poisoned based debugging
+\item 0x5a5a5a5a - uninitialized memory
+\item 0x6b6b6b6b - freed memory
+\item use before init
+\item use after free
+\item buffer overflow
+\end{itemize}
+\end{frame}
+
+
 \section{Tracepoints and Kprobe}
 \begin{frame}{...}
 \end{frame}
