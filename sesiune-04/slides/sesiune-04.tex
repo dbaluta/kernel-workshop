@@ -5,6 +5,8 @@
 \usepackage{code/highlight}
 \usepackage{color}        % dacă e folosit highlight
 \usepackage{alltt}        % dacă e folosit highlight
+\usepackage{verbatim}
+\usepackage{listings}
 
 \title[Session 4]{Session 4}
 \subtitle{Kernel Debugging}
@@ -64,7 +66,39 @@ to /proc/sys/kernel/printk.
 \end{frame}
 
 \section{Classical Debug Solutions}
-\begin{frame}{...}
+\begin{frame}{Classical Debug Solutions}
+\begin{itemize}
+\item Tools:
+\begin{itemize}
+\item objdump, addr2line
+\item gdb, dump\_stack
+\end{itemize}
+\item Data:
+\begin{itemize}
+\item vmlinux, module objects
+\item /proc/kcore, System.map
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Addr2line}
+\begin{verbatim}
+Unable to handle kernel NULL pointer dereference
+at virtual address 00000fc5 pgd = c5db8000
+[00000fc5] *pgd=16aba031, *pte=00000000, *ppte=00000000
+Internal error: Oops: 11 [#1] PREEMPT
+last sysfs file: /sys/power/state
+Modules linked in:
+CPU: 0    Not tainted  (2.6.32 #385)
+PC is at msmfb_suspend+0x1c/0x2c
+LR is at msmfb_suspend+0x20/0x2c
+pc : [<c01b063c>] lr : [<c01b0640>] psr: a0000013
+\end{verbatim}
+
+\begin{verbatim}
+# arm-none-linux-gnueabi-addr2line -f -e vmlinux c01b063c
+#/kernel/linux/drivers/video/msm/msm_fb.c:485
+\end{verbatim}
 \end{frame}
 
 \section{Memory Debug}
