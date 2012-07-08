@@ -1,0 +1,143 @@
+% vim: set tw=78 sts=2 sw=2 ts=8 aw et ai:
+\documentclass{workshop}
+
+% Comentează liniile de mai jos în cazul în care nu există cod de inclus.
+\usepackage{code/highlight}
+\usepackage{color}        % dacă e folosit highlight
+\usepackage{alltt}        % dacă e folosit highlight
+
+\title[Session 6]{Session 6}
+\subtitle{Kernel: Some bits of memory}
+\author{Daniel Băluţă, Irina Preşa}
+\date{July 09, 2012}
+
+\begin{document}
+
+% Arătăm numărul frame-ului
+\setbeamertemplate{footline}[frame number]
+
+\frame{\titlepage}
+
+% NB: Secțiunile nu sunt marcate vizual, ci doar apar în cuprins
+\section{Overview}
+
+\begin{frame}{Kernel Pages}
+  \begin{itemize}
+    \item basic unit of memory management
+    \item processor can address bytes, MMU can translate pages
+    \item page size is architecture dependant (x86 - 4KB, x86_64 - 8KB)
+    \item struct page, consumes 20MB for a system with 4GB RAM
+      \begin{itemize}
+        \item flags (dirty, locked in  memory)
+        \item _count, pages usage count
+	\item virtual, page's virtual address
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Zones}
+  \begin{itemize}
+    \item raison d'etre: hardware limitations
+    \item architecture dependent
+    \item zone DMA, DMA-able pages (\textless 16MB)
+    \item zone NORMAL, normally addressable pages (16MB-896MB)
+    \item zone HIGHMEM, dynamically mapped pages (\textgreater 896MB)
+    \item struct zone
+    \begin{itemize}
+	\item watermark
+	\item name
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Getting pages}
+  \begin{itemize}
+    \item alloc_page(s)
+    \item alloc_pages
+    \item __get__free_page(s)
+    \item __free_pages
+     \item free_page(s)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{kmalloc}
+  \begin{itemize}
+    \item kmalloc(size, flags)
+    \item allocate memory in bytes sized chunks
+     \item flags
+    \begin{itemize}
+	\item GFP_ATOMIC, high priority and must no sleep.
+	\item GFP_KERNEL, normal allocation and might block.
+    \end{itemize}
+  \item GFP_KERNEL
+	\begin{itemize}
+	\item process context, can sleep
+	\item need DMA-able memory, can sleep
+	\end{itemize}
+   \item GFP_ATOMIC
+	\begin{itemize}
+	\item process context, cannot sleep
+	\item interrupt handlers, timers
+	\end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{vmalloc}
+  \begin{itemize}
+  \item memory virtually contiguous
+  \item memory not physically contiguous
+   \item vmalloc(size)
+  \item vfree
+  \end{itemize}
+\end{frame}
+
+
+
+\section{Keywords}
+
+\begin{frame}{Cuvinte cheie}
+  \begin{columns}
+    \begin{column}[l]{0.5\textwidth}
+      \begin{itemize}
+        \item certificări
+        \item LPIC
+        \item GNU/Linux
+        \item Debian
+        \item sysfs
+        \item procfs
+        \item udev
+        \item dispozitive
+      \end{itemize}
+    \end{column}
+    \begin{column}[l]{0.5\textwidth}
+      \begin{itemize}
+        \item apropos, man, info
+        \item linie de comandă
+        \item shell
+        \item biblioteca readline
+        \item pachete, PMS
+        \item dpkg, apt
+        \item utilizatori, grupuri
+        \item parole
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Resurse utile}
+  \begin{itemize}
+    \item James Turnbull, Peter Lieverdink, Dennis Matotek -- Pro Linux System
+    Administration
+    \item \url{http://elf.cs.pub.ro/pisr/}
+    \item
+    \url{http://www.lpi.org/index.php/eng/certification/the_lpic_program}
+    \item \url{http://debian.org/doc/user-manuals}
+    \item \url{http://wiki.debian.org/}
+    \item \url{http://www.debian-administration.org/}
+  \end{itemize}
+\end{frame}
+
+\section{Întrebări}
+
+\end{document}

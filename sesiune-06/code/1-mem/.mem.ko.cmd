@@ -1,0 +1,1 @@
+cmd_/home/daniel/disk/git/kernel/sesiune-06/code/1-mem/mem.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.0.0-12-generic/scripts/module-common.lds --build-id  -o /home/daniel/disk/git/kernel/sesiune-06/code/1-mem/mem.ko /home/daniel/disk/git/kernel/sesiune-06/code/1-mem/mem.o /home/daniel/disk/git/kernel/sesiune-06/code/1-mem/mem.mod.o
