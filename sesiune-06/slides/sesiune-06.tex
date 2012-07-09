@@ -61,6 +61,8 @@
   \end{itemize}
 \end{frame}
 
+\section{Memory allocation in Linux Kernel}
+
 \begin{frame}{kmalloc}
   \begin{itemize}
     \item kmalloc(size, flags)
@@ -83,6 +85,29 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{flags}
+\begin{itemize}
+\item action modifiers
+\begin{itemize}
+\item how the memory should be allocated
+\item GFP_WAIT, allocator can sleep
+\item GFP_IO, allocator can start disk IO
+\item GFP_HIGH, allocator can access emergency pools
+\end{itemize}
+\item zone modifiers
+\begin{itemize}
+\item from where to allocate memory
+\item GFP_DMA
+\item GFP_HIGHMEM
+\end{itemize}
+\item types
+\begin{itemize}
+\item a combination of actions and zone modifiers 
+\item GFP_ATOMIC = GFP_HIGH
+\item GFP_KERNEL = GFP_WAIT + GFP_IO + etc
+\end{itemize}
+\end{itemize}
+\end{frame}
 \begin{frame}{vmalloc}
   \begin{itemize}
   \item memory virtually contiguous
@@ -91,6 +116,52 @@
   \item vfree
   \end{itemize}
 \end{frame}
+
+\begin{frame}{SLAB Layer}
+  \begin{itemize}
+    \item caching
+    \item frequently used data is allocated and freed often
+    \item frequent allocation and deallocation can result in memory fragmentation
+    \item improve performance if we know some patterns of allocation
+    \item divide different objects into groups called caches
+     \begin{itemize}
+	\item task struct
+	\item struct inode
+     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{SLAB Allocator Interface}
+  \begin{itemize}
+  \item kmem_cache_create
+  \begin{itemize}
+  \item create a cache of given size
+  \item slabtop or cat /proc/slabinfo
+   \end{itemize}
+   \item kmem_cache_destroy
+   \item kmem_cache_alloc
+   \begin{itemize}
+    \item allocate an object from a given cache
+   \end{itemize}
+   \item kmem_cache_free
+  \end{itemize}
+\end{frame}
+
+\section{Memory mapping}
+\begin{frame}{Memory mapping}
+  \begin{itemize}
+    \item int mmap(struct file *file, struct vm_area_struct *vma)
+    \item maps the given file onto the given address space
+    \item called by the mmap system call
+    \item reduce the overhead of copying data between user and kernel space
+    \item cat /proc/fd/maps or pmap
+    \item remap_pfn_range
+    \begin{itemize}
+    \item maps physical contiguous address space onto virtual address space
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 
 
 
