@@ -1,1 +1,0 @@
-cmd_/home/daniel/disk/git/kernel/sesiune-06/code/1-mem/built-in.o :=  rm -f /home/daniel/disk/git/kernel/sesiune-06/code/1-mem/built-in.o; ar rcsD /home/daniel/disk/git/kernel/sesiune-06/code/1-mem/built-in.o
