@@ -1,0 +1,481 @@
+# Rebuild source files, if any
+test -d code && make -C code
+make[1]: Entering directory `/home/irina/kernel/sesiune-01/slides/code'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/irina/kernel/sesiune-01/slides/code'
+# Create out directory
+test -d texfiles || mkdir texfiles
+# Twice, so TOC is also updated
+TEXINPUTS=../../sty//: pdflatex -output-directory texfiles sesiune-01.tex
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian)
+entering extended mode
+(./sesiune-01.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(../../sty/workshop.cls
+Document Class: workshop 2012/06/14
+(/usr/share/texmf/tex/latex/beamer/base/beamer.cls
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasercs.sty)
+Document Class: beamer 2007/03/11 cvs version 3.07 A class for typesetting pres
+entations (rcs-revision 1.70)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemodes.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasedecode.sty))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoptions.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty)
+(/etc/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex))
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def)))
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/etc/texmf/tex/latex/config/color.cfg))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathoperations.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathtrig.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathrnd.code.tex))
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathbase.code.tex)))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex)))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbaseimage.sty
+
+Package pgf Warning: This package is obsolete and no longer needed on input lin
+e 13.
+
+) (/usr/share/texmf/tex/latex/pgf/utilities/xxcolor.sty)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty)
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty))
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty))
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty))
+Implicit mode OFF; no redefinition of LaTeX internals
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty))))
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty)
+
+Package hyperref Warning: Option `pdfpagelabels' is turned off
+(hyperref)                because \thepage is undefined.
+
+Hyperref stopped early
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def)
+(/usr/share/texmf-texlive/tex/latex/base/size11.clo)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasecompatibility.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasefont.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemisc.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetwoscreens.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoverlay.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetitle.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasesection.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframe.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseverbatim.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframesize.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframecomponents.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasecolor.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasenotes.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetoc.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseauxtemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseboxes.sty)))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaselocalstructure.sty
+(/usr/share/texmf-texlive/tex/latex/tools/enumerate.sty))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasenavigation.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
+(/usr/share/texmf-texlive/tex/latex/translator/translator.sty
+(/usr/share/texmf-texlive/tex/latex/translator/translator-language-mappings.tex
+)) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texmf-texlive/tex/latex/amscls/amsthm.sty))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasethemes.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/theme/beamerthemedefault.sty
+(/usr/share/texmf/tex/latex/beamer/themes/font/beamerfontthemedefault.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/color/beamercolorthemedefault.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/inner/beamerinnerthemedefault.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/outer/beamerouterthemedefault.sty)))
+(/usr/share/texmf-texlive/tex/latex/ucs/ucs.sty
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-global.def))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+(/usr/share/texmf-texlive/tex/latex/ucs/utf8x.def))
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def)
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-2.def)
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-1.def)
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+(/usr/share/texmf-texlive/tex/generic/babel/english.ldf
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def))
+(/usr/share/texmf-texlive/tex/generic/babel/romanian.ldf
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Romanian'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+)) (/usr/share/texmf-texlive/tex/latex/base/alltt.sty)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/underscore.sty)
+(/usr/share/texmf-texlive/tex/latex/booktabs/booktabs.sty)
+(../../sty/beamerthemeWorkshop.sty
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex)
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex)
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty)
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty))
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex)
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex)
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))
+(/usr/share/texmf/tex/latex/beamer/themes/color/beamercolorthemewolverine.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/inner/beamerinnerthemerounded.sty)))
+(./code/highlight.sty) (texfiles/sesiune-01.aux)
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty))
+(texfiles/sesiune-01.out) (texfiles/sesiune-01.out)
+(/usr/share/texmf-texlive/tex/latex/translator/translator-theorem-dictionary-En
+glish.dict) (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def)
+(texfiles/sesiune-01.nav) (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 19.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../../sty/workshop-logo.
+png>] (texfiles/sesiune-01.toc) [2] [3] (texfiles/sesiune-01.toc) [4] [5]
+(texfiles/sesiune-01.toc) [6] <img/boot.png, id=109, 963.6pt x 722.7pt>
+<use img/boot.png> [7 <./img/boot.png>] [8] [9] [10]
+<img/u-boot.png, id=132, 963.6pt x 722.7pt> <use img/u-boot.png> [11 <./img/u-b
+oot.png>] [12] <img/beagle.jpg, id=144, 803.0pt x 509.905pt>
+<use img/beagle.jpg> <img/phone.jpg, id=145, 100.55855pt x 154.86429pt>
+<use img/phone.jpg> [13 <./img/beagle.jpg> <./img/phone.jpg>]
+<use img/beagle.jpg> <use img/phone.jpg> [14] <use img/beagle.jpg>
+<use img/phone.jpg> [15] (texfiles/sesiune-01.toc) [16] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [17] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [18] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [19] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [20] (texfiles/sesiune-01.toc) [21]
+<img/hp-server.jpg, id=205, 722.7pt x 776.9025pt> <use img/hp-server.jpg>
+<img/thinker.jpg, id=206, 369.38pt x 517.935pt> <use img/thinker.jpg> [22 <./im
+g/hp-server.jpg> <./img/thinker.jpg>] <use img/hp-server.jpg>
+<use img/thinker.jpg> [23] <use img/hp-server.jpg> <use img/thinker.jpg>
+[24] (texfiles/sesiune-01.vrb) [25] (texfiles/sesiune-01.vrb) [26]
+(./code/user-stat.tex
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbar' on input line 10.
+
+) [27] (texfiles/sesiune-01.toc) [28] [29] [30]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\u' on input line 205.
+
+(texfiles/sesiune-01.toc) [31] (texfiles/sesiune-01.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.0pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmssi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on texfiles/sesiune-01.pdf (31 pages, 748163 bytes).
+Transcript written on texfiles/sesiune-01.log.
+TEXINPUTS=../../sty//: pdflatex -output-directory texfiles sesiune-01.tex
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian)
+entering extended mode
+(./sesiune-01.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(../../sty/workshop.cls
+Document Class: workshop 2012/06/14
+(/usr/share/texmf/tex/latex/beamer/base/beamer.cls
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasercs.sty)
+Document Class: beamer 2007/03/11 cvs version 3.07 A class for typesetting pres
+entations (rcs-revision 1.70)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemodes.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasedecode.sty))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoptions.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty)
+(/etc/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex))
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def)))
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/etc/texmf/tex/latex/config/color.cfg))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathoperations.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathtrig.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathrnd.code.tex))
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathbase.code.tex)))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex)))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbaseimage.sty
+
+Package pgf Warning: This package is obsolete and no longer needed on input lin
+e 13.
+
+) (/usr/share/texmf/tex/latex/pgf/utilities/xxcolor.sty)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty)
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty))
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty))
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty))
+Implicit mode OFF; no redefinition of LaTeX internals
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty))))
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty)
+
+Package hyperref Warning: Option `pdfpagelabels' is turned off
+(hyperref)                because \thepage is undefined.
+
+Hyperref stopped early
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def)
+(/usr/share/texmf-texlive/tex/latex/base/size11.clo)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasecompatibility.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasefont.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemisc.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetwoscreens.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoverlay.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetitle.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasesection.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframe.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseverbatim.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframesize.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframecomponents.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasecolor.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasenotes.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetoc.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseauxtemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseboxes.sty)))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaselocalstructure.sty
+(/usr/share/texmf-texlive/tex/latex/tools/enumerate.sty))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasenavigation.sty)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
+(/usr/share/texmf-texlive/tex/latex/translator/translator.sty
+(/usr/share/texmf-texlive/tex/latex/translator/translator-language-mappings.tex
+)) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texmf-texlive/tex/latex/amscls/amsthm.sty))
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasethemes.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/theme/beamerthemedefault.sty
+(/usr/share/texmf/tex/latex/beamer/themes/font/beamerfontthemedefault.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/color/beamercolorthemedefault.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/inner/beamerinnerthemedefault.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/outer/beamerouterthemedefault.sty)))
+(/usr/share/texmf-texlive/tex/latex/ucs/ucs.sty
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-global.def))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+(/usr/share/texmf-texlive/tex/latex/ucs/utf8x.def))
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def)
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-2.def)
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-1.def)
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+(/usr/share/texmf-texlive/tex/generic/babel/english.ldf
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def))
+(/usr/share/texmf-texlive/tex/generic/babel/romanian.ldf
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Romanian'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+)) (/usr/share/texmf-texlive/tex/latex/base/alltt.sty)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/underscore.sty)
+(/usr/share/texmf-texlive/tex/latex/booktabs/booktabs.sty)
+(../../sty/beamerthemeWorkshop.sty
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex)
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex)
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty)
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty))
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex)
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex)
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))
+(/usr/share/texmf/tex/latex/beamer/themes/color/beamercolorthemewolverine.sty)
+(/usr/share/texmf/tex/latex/beamer/themes/inner/beamerinnerthemerounded.sty)))
+(./code/highlight.sty) (texfiles/sesiune-01.aux)
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty))
+(texfiles/sesiune-01.out) (texfiles/sesiune-01.out)
+(/usr/share/texmf-texlive/tex/latex/translator/translator-theorem-dictionary-En
+glish.dict) (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def)
+(texfiles/sesiune-01.nav) (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 19.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../../sty/workshop-logo.
+png>] (texfiles/sesiune-01.toc) [2] [3] (texfiles/sesiune-01.toc) [4] [5]
+(texfiles/sesiune-01.toc) [6] <img/boot.png, id=109, 963.6pt x 722.7pt>
+<use img/boot.png> [7 <./img/boot.png>] [8] [9] [10]
+<img/u-boot.png, id=132, 963.6pt x 722.7pt> <use img/u-boot.png> [11 <./img/u-b
+oot.png>] [12] <img/beagle.jpg, id=144, 803.0pt x 509.905pt>
+<use img/beagle.jpg> <img/phone.jpg, id=145, 100.55855pt x 154.86429pt>
+<use img/phone.jpg> [13 <./img/beagle.jpg> <./img/phone.jpg>]
+<use img/beagle.jpg> <use img/phone.jpg> [14] <use img/beagle.jpg>
+<use img/phone.jpg> [15] (texfiles/sesiune-01.toc) [16] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [17] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [18] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [19] <use img/phone.jpg>
+<use img/phone.jpg> <use img/phone.jpg> [20] (texfiles/sesiune-01.toc) [21]
+<img/hp-server.jpg, id=205, 722.7pt x 776.9025pt> <use img/hp-server.jpg>
+<img/thinker.jpg, id=206, 369.38pt x 517.935pt> <use img/thinker.jpg> [22 <./im
+g/hp-server.jpg> <./img/thinker.jpg>] <use img/hp-server.jpg>
+<use img/thinker.jpg> [23] <use img/hp-server.jpg> <use img/thinker.jpg>
+[24] (texfiles/sesiune-01.vrb) [25] (texfiles/sesiune-01.vrb) [26]
+(./code/user-stat.tex
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbar' on input line 10.
+
+) [27] (texfiles/sesiune-01.toc) [28] [29] [30]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\u' on input line 205.
+
+(texfiles/sesiune-01.toc) [31] (texfiles/sesiune-01.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.0pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmssi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on texfiles/sesiune-01.pdf (31 pages, 748163 bytes).
+Transcript written on texfiles/sesiune-01.log.
+cp texfiles/sesiune-01.pdf .
