@@ -5,6 +5,7 @@
 %\usepackage{code/highlight}
 \usepackage{color}        % dacă e folosit highlight
 \usepackage{alltt}        % dacă e folosit highlight
+\usepackage{verbatim}
 
 \title[Sesssion 10]{Session 10}
 \subtitle{Contributing to Upstream: GIT Versioning, Patching, Linux Community}
@@ -56,22 +57,119 @@ name all my projects after myself. First 'Linux', now 'git'"}.
 \end{figure}
 \end{frame}
 
-\begin{frame}{Initial Configurations}
+\begin{frame}{Keywords}
 \end{frame}
 
-\begin{frame}{General Operations}
+\begin{frame}{Initial Configurations}
+\begin{itemize}
+\item git config --global user.name "nume prenume "
+\item git config --global user.email "nume@dom.com "
+\item git config --global color.ui auto
+\item cat /.gitconfig
+\end{itemize}
 \end{frame}
 
 \begin{frame}{General Flow}
+Owner\\
+\begin{enumerate}
+\item init .
+\item create files and directories.
+\item add content/modifications to stash: git add.
+\item create commit: git commit -m "Message".
+\item go back to step 2.
+\end{enumerate}
+Contribuitor\\
+\begin{enumerate}
+\item clone repo: git clone URL.
+\item create files and directories.
+\item add content/modifications to stash: git add.
+\item create commit: git commit -m "Message".
+\item update local repo: git pull --rebase
+\item send modifications: git push origin master
+\item go back to step 2.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{General Flow}
+Owner\\
+\begin{enumerate}
+\item init .
+\item create files and directories.
+\item add content/modifications to stash: git add.
+\item create commit: git commit -m "Message".
+\item go back to step 2.
+\end{enumerate}
+"Not-trusted" comitter\\
+\begin{enumerate}
+\item fork repo: git fork URL.
+\item create files and directories.
+\item add content/modifications to stash: git add.
+\item create commit: git commit -m "Message".
+\item send modifications: git push origin master
+\item go back to step 2.
+\item after finishing work:
+\begin{itemize}
+\item create and send patch OR
+\item send pull request
+\end{itemize}
+\end{enumerate}
 \end{frame}
 
 \begin{frame}{Repo Visualization}
+\begin{itemize}
+\item git diff
+\item git status, log
+\item git show <rev>
+\item git blame <file>
+\item gitk, gitg, giggle, tig
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Solving Conflicts}
+\begin{itemize}
+\item manual merge or use a special tool
+\item git stash
+\item git bisect (binary search)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Solving Conflicts}
+\begin{verbatim}
+git stash
+git pull
+git stash pop
+//solve conflicts
+//commit
+\end{verbatim}
+\begin{verbatim}
+$ git bisect start
+$ git bisect bad
+$ git bisect good v1.0
+Bisecting: 6 revisions left to test after this
+[ecb6e1b] error handling on repo
+git bisect good/bad
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Branching}
+\begin{itemize}
+\item collaborative editing.
+\item faster development.
+\item different development branches.
+\begin{itemize}
+\item new release.
+\item experimental feature.
+\item new module
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Patching Solutions}
+\begin{itemize}
+\item git format-patch
+\item git send-mail
+\item git diff
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Extra: Post-Receive Hooks}
