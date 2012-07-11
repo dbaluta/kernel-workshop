@@ -2,9 +2,10 @@
 \documentclass{workshop}
 
 % Comentează liniile de mai jos în cazul în care nu există cod de inclus.
-\usepackage{code/highlight}
-\usepackage{color}        % dacă e folosit highlight
-\usepackage{alltt}        % dacă e folosit highlight
+%\usepackage{code/highlight}
+%\usepackage{color}        % dacă e folosit highlight
+%\usepackage{alltt}        % dacă e folosit highlight
+\usepackage{amsfonts} 
 
 \title[Sesssion 9]{Session 9}
 \subtitle{Linux in Embedded Systems}
@@ -77,13 +78,102 @@ What we will be covering today
 
 \section{Example of a Linux System}
 \begin{frame}{ATNGW100}
+\only<1>{
 \begin{figure}
 	\includegraphics[width=1\textwidth]{img/Ngwoverview.png}
 \end{figure}
+}
+\only<2>{
+Key features:
+\begin{itemize}
+	\item 140MHz processor (AT32AP7000)
+	\item 32MB SDRAM
+	\item 8MB Parallel Flash
+	\item 8MB Serial Flash
+	\item 2x Ethernet ports
+	\item USB B port (device port)
+	\item RS232
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Linux prerequisites}
+\begin{itemize}
+		\definecolor{darkgreen}{RGB}{0,100,0}
+	\item 32-bit processor \visible<2-> {\textcolor{darkgreen}{\checkmark}}
+	\visible<3->{\item MMU} \visible<4-> {\textcolor{darkgreen}{AP7000 is a SoC with many peripherals, and a MMU \checkmark}}
+	\visible<5->{\item  Location to run bootloader from } 
+		\visible<6-> {\textcolor{darkgreen}{Bootloader is in Parallel Flash \checkmark}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Linux components}
+	\begin{itemize}
+		\visible<1-> {\item The Kernel}
+		\visible<2-> {\item Filesystem
+			\begin{itemize}
+				\item Coreutils
+				\item Userspace Applications
+			\end{itemize}
+		}
+	\end{itemize}
+	\visible<3-> { How can we compile these?}
+
+	\visible<4->{
+		\begin{itemize}
+			\item Gcc
+			\visible<5->{
+				\begin{itemize}
+					\item Which GCC?
+				\end{itemize}
+			}
+		\end{itemize}
+	}
+	\visible<6->{
+		Luckily, build systems exist...
+		\begin{itemize}
+			\item Buildroot
+			\item Bitbake
+			\item Yocto Project
+		\end{itemize}
+	}
 \end{frame}
 
 \section{Booting Up}
+\subsection{}
+\begin{frame}{Bootloaders}
+	\begin{itemize}
+		\item Processors always start execution at a specific address
+		\item The code there loads the boot image of ("bootloader")
+			\begin{itemize}
+				\item Linux
+				\item Other OS, maybe RT OS
+				\item Application
+			\end{itemize}
+
+		\item In the case of Linux
+			\begin{itemize}
+				\item It loads the image into memory, it can load it from multiple locations (U-Boot supports MMC, TFTP, Flash, etc.)
+				\item It gives the command line for the linux kernel (most importantly, the console and the root filesystem location)
+				\item Many bootloaders offer limited scripting 
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Kernel Initialization}
+\end{frame}
+
+\begin{frame}{System Initialization}
+\end{frame}
 
 \section{Practical}
+
+\subsection{}
+\begin{frame}{LED. The module.}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Debugging Kernel Modules}
+\end{frame}
 
 \end{document}
