@@ -160,8 +160,26 @@ Key features:
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Bootloader loading kernel image}
+\input{code/start.tex}
+\end{frame}
+
 \begin{frame}{Kernel Initialization}
-	\input{code/interrupt}
+\only<1>{
+\begin{itemize}
+	\item The kernel needs to uncompress itself first\\
+	\item CPU initialization
+		\begin{itemize}
+			\item Identify CPU
+			\item Identify MMU setting
+			\item Initialize MMU, flush TLB
+		\end{itemize}
+	\item Board initialization
+\end{itemize}
+}
+\only<2>{
+	\input{code/kernel.tex}
+}
 \end{frame}
 
 \begin{frame}{System Initialization}
