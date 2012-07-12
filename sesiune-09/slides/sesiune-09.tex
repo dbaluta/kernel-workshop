@@ -34,13 +34,13 @@ What we will be covering today
 \visible<2->{What we will NOT be covering
 \begin{itemize}
 	\item How to develop Linux applications
+	\item How to debug a module remotely via ssh
 	
 \end{itemize}
 }
 \visible<3->{What we will experiment
 \begin{itemize}
 \item How to write a simple device driver for an embedded board
-\item How to debug a module remotely via ssh
 \end{itemize}
 }
 \end{frame}
@@ -206,16 +206,54 @@ Key features:
 \end{frame}
 
 \begin{frame}{System Initialization}
+\begin{itemize}
+	\item Init process
+		\begin{itemize}
+			\item Spawns shells or logins
+			\item Runs init scripts according to runlevel\\
+				\vskip5pt
+				\begin{tabular}{cl}
+					\hline
+					\textbf{Runlevel} & \textbf{Mode} \\
+					\hline
+					0 & System shutdown \\
+					1 & Single user mode \\
+					3 & Multiuser mode \\
+					5 & Multiuser mode with X\\
+					6 & System reboot \\
+					\hline
+				\end{tabular}
+				\vskip5pt
+		\end{itemize}
+	\item Scripts reside in \texttt{/etc/init.d} directory
+	\item Symlinks to scripts are in \texttt{/etc/rc}\textit{N}\texttt{.d}
+\end{itemize}
 \end{frame}
 
 \section{Practical}
-
 \subsection{}
 \begin{frame}{LED. The module.}
-\end{frame}
-
-\subsection{}
-\begin{frame}{Debugging Kernel Modules}
+	\begin{itemize}
+		\item Default driver has sysfs interface
+			\begin{itemize}
+				\item \texttt{/etc/sys/class/leds}
+			\end{itemize}
+		\item Pins are grouped in 32-pin ports
+		\item Each port has 4 important registers to control data output
+			\begin{itemize}
+				\item \texttt{PER} - Pin enable register
+				\item \texttt{OER} - Output enable register
+				\item \texttt{CODR} - Clear output data register
+				\item \texttt{SODR} - Set output data register
+			\end{itemize}
+		\item Each register has 32bits, corresponding to pins (pin 0 is MSb)
+		\item To set a pin to 0, we must
+			\begin{itemize}
+				\item Enable the pin (bit in \texttt{PER})
+				\item Enable output on the pin (bit in \texttt{OER})
+				\item Clear the value (set 1 in the bit in \texttt{CODR})
+			\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \end{document}
