@@ -8,9 +8,9 @@
 \usepackage{verbatim}
 
 \title[Sesssion 10]{Session 10}
-\subtitle{Contributing to Upstream: GIT Versioning, Patching, Linux Community}
+\subtitle{Contributing to the Linux Kernel}
 \author{Daniel Băluță, Irina Preșa}
-\date{13 July 2012}
+\date{July 13, 2012}
 
 \begin{document}
 
@@ -32,7 +32,7 @@ name all my projects after myself. First 'Linux', now 'git'"}.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Why Version Control}
+\begin{frame}{Why Version Control?}
 \begin{itemize}
 \item restore a previous version.
 \item collaborative work.
@@ -41,7 +41,7 @@ name all my projects after myself. First 'Linux', now 'git'"}.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Why GIT}
+\begin{frame}{Why GIT?}
 \begin{itemize}
 \item increased performance for large projects.
 \item distributed (local vs remote repo).
@@ -55,9 +55,6 @@ name all my projects after myself. First 'Linux', now 'git'"}.
 \begin{figure}
   \includegraphics[scale=0.3]{img/flow.png}
 \end{figure}
-\end{frame}
-
-\begin{frame}{Keywords}
 \end{frame}
 
 \begin{frame}{Initial Configurations}
@@ -180,6 +177,49 @@ git bisect good/bad
 \item send e-mails.
 \end{itemize}
 \end{frame}
+
+\section{Linux Kernel development model}
+
+\begin{frame}{Overview}
+\begin{figure}
+  \includegraphics[scale=0.6]{img/trees.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Just a bit of taste}
+\begin{itemize}
+\item curent versioning scheme: 3.x.y
+\begin{itemize}
+\item 3.x-rcN, release candidate (each week)
+\item 3.x, major release (around 2 months)
+\item 3.x.y, minor release (whenever is needed)
+\end{itemize}
+\item previous versioning scheme: 2.6.x.y
+\begin{itemize}
+\item 20 years of Linux
+\item 2.6.39 switched to 3.0
+\end{itemize}
+\item case study - 3.4.0 release
+\begin{itemize}
+\item 2833 developers
+\item 373 companies
+\item 7.21 changes per hour
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Life of a patch}
+\begin{itemize}
+\item modify code, and create patch
+\item check_maintainer.pl
+\item checkpatch.pl
+\item send patch to correct recipients
+\item wait for feedback
+\end{itemize}
+\end{frame}
+
+
 
 \section{Keywords}
 
