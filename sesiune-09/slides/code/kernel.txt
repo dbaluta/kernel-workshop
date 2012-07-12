@@ -1,0 +1,25 @@
+## Booting kernel from Legacy Image at 90400000 ...
+   Image Name:   Linux-2.6.35.4
+   Image Type:   AVR32 Linux Kernel Image (gzip compressed)
+   Data Size:    1505270 Bytes =  1.4 MB
+   Load Address: 10000000
+   Entry Point:  90000000
+   Verifying Checksum ... OK
+   Uncompressing Kernel Image ... OK
+
+Starting kernel at 90000000 (params at 11f70008)...
+
+Linux version 2.6.35.4 (andrei@vanguard) (gcc version 4.2.4-atmel.1.1.3.avr32linux.1) #1 Thu Oct 20 18:50:33 EEST1
+CPU: AT32AP700x chip revision C
+CPU: AP7 [01] core revision 0 (AVR32B arch revision 1)
+CPU: MMU configuration: Shared TLB
+CPU: features: dsp simd ocd perfctr java
+CPU: Running at 140.000 MHz
+Physical memory:
+  10000000-11ffffff
+Reserved memory:
+  10000000-101c7893: Kernel code
+  101c7894-1027e61f: Kernel data
+Exception vectors start at 90014000
+CPU: Paging enabled
+

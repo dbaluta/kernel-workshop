@@ -1,0 +1,18 @@
+macb0: Starting autonegotiation...
+macb0: Autonegotiation complete
+macb0: link up, 100Mbps full-duplex (lpa: 0x45e1)
+BOOTP broadcast 1
+DHCP client bound to address 192.168.1.7
+macb0: link up, 100Mbps full-duplex (lpa: 0x45e1)
+Using macb0 device
+TFTP from server 141.85.227.44; our IP address is 192.168.1.7; sending through gateway 192.168.1.1
+Filename 'uImage'.
+Load address: 0x90400000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ###################################
+done
+Bytes transferred = 1505334 (16f836 hex)
+
