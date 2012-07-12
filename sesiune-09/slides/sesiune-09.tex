@@ -175,10 +175,33 @@ Key features:
 			\item Initialize MMU, flush TLB
 		\end{itemize}
 	\item Board initialization
+		\begin{itemize}
+			\item Serial line, \texttt{ttyS0}
+			\item Initialize Parallel Flash, \texttt{physmap-flash.0}
+			\item Initialize SPI Link
+				\begin{itemize}
+					\item Find SPI Dataflash (8MB)
+				\end{itemize}
+			\item Initialize MAC chips through MII (Media Independent Interface)
+		\end{itemize}
 \end{itemize}
 }
 \only<2>{
 	\input{code/kernel.tex}
+}
+\only<3>{
+	\input{code/board.tex}
+}
+\only<4>{
+	\begin{itemize}
+		\item Final step is to mount root
+			\begin{itemize}
+				\item Request DHCP... again
+				\item Connect to portmapper running on server
+				\item Find nfs and mountd ports from portmapper
+			\end{itemize}
+	\end{itemize}
+	\input{code/nfs.tex}
 }
 \end{frame}
 
