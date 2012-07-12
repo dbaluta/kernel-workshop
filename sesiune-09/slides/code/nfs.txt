@@ -1,0 +1,13 @@
+Sending DHCP requests ., OK
+IP-Config: Got DHCP answer from 0.0.0.0, my address is 192.168.1.14
+IP-Config: Complete:
+     device=eth0, addr=192.168.1.14, mask=255.255.255.0, gw=192.168.1.1,
+     host=192.168.1.14, domain=, nis-domain=(none),
+     bootserver=0.0.0.0, rootserver=141.85.227.44, rootpath=
+Waiting 1sec before mounting root device...
+eth0: link up (100/Full)
+Looking up port of RPC 100003/2 on 141.85.227.44
+Looking up port of RPC 100005/1 on 141.85.227.44
+VFS: Mounted root (nfs filesystem) on device 0:13.
+Freeing init memory: 80K (90000000 - 90014000)
+

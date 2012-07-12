@@ -1,0 +1,27 @@
+atmel_usart.0: ttyS0 at MMIO 0xffe01000 (irq = 7) is a ATMEL_SERIAL
+physmap platform flash device: 00800000 at 00000000
+physmap-flash.0: Found 1 x16 devices at 0x0 in 16-bit bank
+Amd/Fujitsu Extended Query Table at 0x0041
+number of CFI chips: 1
+RedBoot partition parsing not available
+Using physmap partition information
+Creating 3 MTD partitions on "physmap-flash.0":
+0x000000000000-0x000000020000 : "u-boot"
+0x000000020000-0x0000007f0000 : "root"
+0x0000007f0000-0x000000800000 : "env"
+atmel_spi atmel_spi.0: Atmel SPI Controller at 0xffe00000 (irq 3)
+mtd_dataflash spi0.0: AT45DB642x (8448 KBytes) pagesize 1056 bytes (OTP)
+MACB_mii_bus: probed
+eth0: Atmel MACB at 0xfff01800 irq 25 (10:00:00:01:0c:0d)
+eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=0:01, irq=-1)
+macb macb.1: invalid hw address, using random
+MACB_mii_bus: probed
+eth1: Atmel MACB at 0xfff01c00 irq 26 (fe:7c:ac:06:35:72)
+eth1: attached PHY driver [Generic PHY] (mii_bus:phy_addr=1:03, irq=-1)
+atmel_usba_udc atmel_usba_udc.0: MMIO registers at 0xfff03000 mapped at fff03000
+atmel_usba_udc atmel_usba_udc.0: FIFO at 0xff300000 mapped at ff300000
+at32ap700x_rtc at32ap700x_rtc.0: rtc core: registered at32ap700x_rtc as rtc0
+at32ap700x_rtc at32ap700x_rtc.0: Atmel RTC for AT32AP700x at fff00080 irq 21
+at32_wdt at32_wdt.0: AT32AP700X WDT at 0xfff000b0, timeout 2 sec (nowayout=0)
+dw_dmac.0: DesignWare DMA Controller, 3 channels
+
