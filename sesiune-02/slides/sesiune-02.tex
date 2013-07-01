@@ -8,8 +8,8 @@
 
 \title[Session 2]{Session 2}
 \subtitle{Kernel: Code, Build, Run}
-\author{Daniel Băluţă, Irina Preşa}
-\date{July 03, 2012}
+\author{Daniel Băluţă, Irina Preșa, Alex Juncu}
+\date{July 02, 2013}
 
 \begin{document}
 
@@ -19,6 +19,52 @@
 \frame{\titlepage}
 
 % NB: Secțiunile nu sunt marcate vizual, ci doar apar în cuprins
+
+\section{Compiling the kernel}
+
+\begin{frame}{Getting the source}
+	\begin{itemize}
+		\item kernel.org
+		\begin{itemize}
+			\item tarballs (usually for sysadmins)
+			\item git repo clone (usually for developers -- that's us!)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Compilation steps}
+\begin{itemize}
+	\item make menuconfig
+	\item make bzImage
+	\item make modules
+	\item make modules_install
+	\item create initial ramdisk
+	\item update grub entry
+	\item reboot
+\end{itemize}
+\end{frame}
+
+\begin{frame}{build targets}
+\begin{itemize}
+	\item {\bf config}, update config using a line oriented program
+	\item {\bf i386_defconfig}, build for i386
+	\item {\bf vmlinux}, builds the bare kernel image
+	\item {\bf bzImage}, builds compressed kernel image
+	\item {\bf modules}, builds all modules
+	\item {\bf clean}, remove most generated files
+	\item {\bf mrproper}, remove all generated files
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Kernel configuration file}
+
+\begin{figure}
+  \includegraphics[scale=0.4]{img/Linux-kernel-menuconfig.png}
+\end{figure}
+\end{frame}
+
 \section{OS Basic Concepts}
 
 \begin{frame}{Monolithic kernel vs Microkernel}
@@ -39,7 +85,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{User space vs Kernel spce}
+\begin{frame}{User space vs Kernel space}
 
 \begin{figure}
   \includegraphics[scale=0.4]{img/user-kernel-space.jpg}
@@ -48,47 +94,13 @@
 \end{frame}
 
 
-\section{Compiling the kernel}
-
-\begin{frame}{Kernel configuration file}
-
-\begin{figure}
-  \includegraphics[scale=0.4]{img/Linux-kernel-menuconfig.png}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{build targets}
-\begin{itemize}
-	\item {\bf config}, update config using a line oriented program
-	\item {\bf i386_defconfig}, build for i386
-	\item {\bf vmlinux}, builds the bare kernel image
-	\item {\bf bzImage}, builds compressed kernel image
-	\item {\bf modules}, builds all modules
-	\item {\bf clean}, remove most generated files
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Compilation steps}
-\begin{itemize}
-	\item make menuconfig
-	\item make bzImage
-	\item make modules
-	\item make modules_install
-	\item create initial ramdisk
-	\item update grub entry
-	\item reboot
-\end{itemize}
-\end{frame}
-
 \section{Kernel Modules}
 
 
 \begin{frame}{Kernel modules}
 
 \begin{itemize}
-	\item {\bf printk}
-	\item {\bf dmesg}, print or control the kernel ring buffer
+	\item {\bf .ko} files, usually in \emph{/lib/modules}
 	\item {\bf insmod}, insert a module into the kernel
 	\item {\bf rmmod}, remove a module form the kernel
 	\item {\bf modprobe}, add or remove modules
@@ -96,12 +108,21 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Kernel dev's best friend}
+
+\begin{itemize}
+	\item {\bf printk}
+	\item {\bf dmesg}, print or control the kernel ring buffer
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}[fragile]{Simple kernel module}
 \begin{verbatim}#include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
 
-MODULE_DESCRIPTION("My kernel module");
+MODULE_DESCRIPTION("My first kernel module");
 MODULE_AUTHOR("Me");
 MODULE_LICENSE("GPL");
 
@@ -115,7 +136,7 @@ static void simple_exit(void)
         printk( KERN_DEBUG "Bye\n" );
 }
 module_init(simple_init);
-module_exit(simple_exit);                          
+module_exit(simple_exit);
 \end{verbatim}
 \end{frame}
 
